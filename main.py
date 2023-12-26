@@ -10,7 +10,7 @@ data = torch.tensor(
 
 model = SingleRegression(data = data)
 
-x_preds = [5]
+x_preds = [5, 10, 15, 20, 25]
 y_preds = [model.get_prediction(x_pred) for x_pred in x_preds]
 for i in range(0, len(y_preds)):
     print(f"x_pred: {x_preds[i]} | Prediction (y_pred): {y_preds[i]}")
