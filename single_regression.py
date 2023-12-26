@@ -2,10 +2,7 @@ import torch
 
 class SingleRegression:
 
-    def __init__(self, data):
-        self.__create_model(data)
-
-    def __create_model(self, data):
+    def fit(self, data):
 
         x_data, y_data = data
         num_datapoints = len(x_data)
@@ -21,8 +18,12 @@ class SingleRegression:
 
         # y_pred = beta_0 + beta_1(x)
     
-    def get_prediction(self, x):
-
+    def _get_prediction(self, x):
         return self.beta_0 + (self.beta_1 * torch.tensor(x))
+
+    def get_predictions(self, x_preds):
+        y_preds = [self._get_prediction(x_pred) for x_pred in x_preds]
         
+        for i in range(0, len(y_preds)):
+            print(f"x_pred: {x_preds[i]} | Prediction (y_pred): {y_preds[i]}")
 
